@@ -8,7 +8,6 @@ const {
     updatePackage,
     getPackageById,
     deletePackage
-   
   } = require("../controller/package.controller");
 
   router.post("/", addPackage);

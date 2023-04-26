@@ -3,7 +3,6 @@ const mongoose = require ('mongoose');
 const Schema = mongoose.Schema;
 
 const packageSchema = new Schema({
-
     packageId : {type : String,required : true},
     item : {type : String,required : true},
     category : {type : String,required : true},
@@ -13,15 +12,11 @@ const packageSchema = new Schema({
     customerName: {type :String},
     address: {type :String, required : true},
     phone: {type :String},
-
     lostAndFound: {type :String},
     lostPlace: {type :String},
     lostDate: {type :String},
     lostTime: {type :String},
 
-
-    
-     
 },{
         timestamps : true,
     

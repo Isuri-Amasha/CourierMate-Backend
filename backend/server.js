@@ -19,13 +19,9 @@ connection.once('open', () => {
     console.log("Mongo DB connection established successfully");
 })
 
-
-
 const packageRouter = require('./routes/package');
 
 app.use('/package', packageRouter);
-
-
 
 app.listen(port, () => {
     console.log(`Server is running on port:-${port}`);

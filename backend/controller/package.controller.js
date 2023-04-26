@@ -1,9 +1,9 @@
 const Package = require("../models/package.model");
 
+//add function
 const addPackage = async (req, res) => {
     const { packageId,item,category,specialNotes,acceptedDate,acceptedTime,customerName,address,phone, lostAndFound,lostPlace,lostDate,lostTime} =
-      req.body;
-  
+      req.body;  
     const newPackage = new Package({
         packageId,
         item,
@@ -19,13 +19,13 @@ const addPackage = async (req, res) => {
         lostDate,
         lostTime
     });
-  
     await newPackage
       .save()
       .then(() => res.json('Package added!'))
       .catch((error) => res.status(400).json("Error: " + error));
   };
 
+//get all function
   const getPackages = async (req, res) => {
     try {
       const package = await Package.find();
@@ -35,6 +35,7 @@ const addPackage = async (req, res) => {
     }
   };
 
+//get function
   const getPackageById = async (req, res) => {
     try {
       const package = await Package.findById(req.params.id);
@@ -68,23 +69,6 @@ const addPackage = async (req, res) => {
       })
       .catch((error) => res.status(400).json("Error: " + error));
   };
-  
-//   const addResponse = async (req, res) => {
-//     Feedback.findByIdAndUpdate(req.params.id)
-//       .then((existingFeedback) => {
-//         existingFeedback.course = req.body.course;
-//         existingFeedback.student = req.body.student;
-//         existingFeedback.rating = req.body.rating;
-//         existingFeedback.feedback = req.body.feedback;
-//         existingFeedback.response = req.body.response;
-        
-//         existingFeedback
-//           .save()
-//           .then(() => res.json('Response Added!'))
-//           .catch((error) => res.status(400).json("Error: " + error));
-//       })
-//       .catch((error) => res.status(400).json("Error: " + error));
-//   };
 
   const deletePackage = async (req, res) => {
     Package.findByIdAndDelete(req.params.id)
@@ -94,12 +78,10 @@ const addPackage = async (req, res) => {
       .catch((error) => res.status(400).json("Error: " + error));
   };
 
-  
   module.exports = {
     addPackage,
     getPackages,
     getPackageById,
     updatePackage,
     deletePackage
-  
   }
