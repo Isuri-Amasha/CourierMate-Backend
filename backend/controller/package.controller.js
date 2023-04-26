@@ -1,7 +1,7 @@
 const Package = require("../models/package.model");
 
 const addPackage = async (req, res) => {
-    const { packageId,item,category,specialNotes,acceptedDate,acceptedTime,customerName,address,phoneNumber, lostAndFound,lostPlace,lostDate,lostTime} =
+    const { packageId,item,category,specialNotes,acceptedDate,acceptedTime,customerName,address,phone, lostAndFound,lostPlace,lostDate,lostTime} =
       req.body;
   
     const newPackage = new Package({
@@ -13,7 +13,7 @@ const addPackage = async (req, res) => {
         acceptedTime,
         customerName,
         address,
-        phoneNumber,
+        phone,
         lostAndFound,
         lostPlace,
         lostDate,
@@ -63,7 +63,7 @@ const addPackage = async (req, res) => {
         
         existingPackage
           .save()
-          .then(() => res.status(200))
+          .then(() => res.json('Package Updated!'))
           .catch((error) => res.status(400).json("Error: " + error));
       })
       .catch((error) => res.status(400).json("Error: " + error));
